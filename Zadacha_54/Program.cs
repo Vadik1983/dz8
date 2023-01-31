@@ -19,8 +19,9 @@ inputMinMax(ref min, ref max);
 int[,] array = GetRandomArray(rows, columns, min, max);
 PrintArray(array);
 Console.WriteLine();
-//GetStructurArray(array);
 PrintStructurArray(array);
+PrintArray(array);
+
 /////////////////////////////////////////////
 
 void inputRowsColumns(ref int rows, ref int columns)
@@ -55,13 +56,13 @@ void inputMinMax(ref int min, ref int max)
 
 int[,] GetRandomArray(int rows, int columns, int min, int max)
 {
-    int[,] result = new int [rows,  columns];
+    int[,] result = new int[rows, columns];
     var rnd = new Random();
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
-        { 
-            result[i,j] = rnd.Next((int)min, (int)max);
+        {
+            result[i, j] = rnd.Next((int)min, (int)max);
         }
     }
     return result;
@@ -69,53 +70,33 @@ int[,] GetRandomArray(int rows, int columns, int min, int max)
 
 void PrintArray(int[,] inArray)
 {
-    for(int i = 0; i < inArray.GetLength(0); i++)
-    { 
-        for(int j = 0; j < inArray.GetLength(1); j++)
+    for (int i = 0; i < inArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < inArray.GetLength(1); j++)
         {
-            Console.Write($"{inArray[i,j]}  ");
+            Console.Write($"{inArray[i, j]}  ");
         }
         Console.WriteLine();
     }
 }
 
-
-
-/*int[,] GetStructurArray(int[,] array)
-{
-    int[,] result = new int [rows,  columns];
-    for (int i = 0; i < rows - 1; i++)
-    {
-        for (int j = 0; j < columns - 1; j++)
-        { 
-             if(array[i,j] < array[i + 1, j + 1])
-                {
-                    int temp = array[i,j];
-                    array[i,j] = array[i + 1, j + 1];
-                    array[i + 1, j + 1] = temp;
-                }
-        }
-    }
-    return result;
-}*/
 void PrintStructurArray(int[,] inArray)
 {
-    int j = 0;
-    int i = 0;
-    
-    for(i = 0; i < columns; i++)
-    { 
-        for(j = 0; j < rows; j++)
+
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            if(( inArray[i,j]< inArray[i + 1, j]) &&  i < rows)
+            for (int x = 0; x < array.GetLength(1) - 1; x++)
+            {
+                if (array[i, x] < array[i, x + 1])
                 {
-                    int temp = inArray[i,j];
-                    inArray[i,j] = inArray[i + 1, j];
-                    inArray[i + 1, j] = temp;
-                    
+                    int temp = array[i, x + 1];
+                    array[i, x + 1] = array[i, x];
+                    array[i, x] = temp;
                 }
-            Console.Write($"{inArray[i,j]}  ");
+            }
         }
-        Console.WriteLine();
     }
 }
