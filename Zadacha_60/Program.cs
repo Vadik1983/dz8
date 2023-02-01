@@ -77,7 +77,7 @@ void PrintArray(int[,,] inArray)
         {
             for (int x = 0; x < inArray.GetLength(2); x++)
             {
-                Console.Write($"{inArray[i, j, x]} ({i}{j},{x})");
+                Console.Write($"{inArray[i, j, x]} => ({i},{j},{x}); ");
             }
             Console.WriteLine();
         }
