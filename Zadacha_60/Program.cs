@@ -29,7 +29,7 @@ void inputRowsColumns(ref int rows, ref int columns, ref int depth)
         Console.Write($"Введите количество столбцов: ");
         columns = int.Parse(Console.ReadLine() ?? "");
         Console.Write($"Введите глубину массива: ");
-        columns = int.Parse(Console.ReadLine() ?? "");
+        depth = int.Parse(Console.ReadLine() ?? "");
     }
     catch (Exception ex)
     {
